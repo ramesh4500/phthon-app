@@ -11,7 +11,7 @@ image:
   # This sets the pull policy for images.
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v1"
+  tag: v1
 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets: []
 # This is to override the chart name.
@@ -21,7 +21,7 @@ fullnameOverride: ""
 # This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
 serviceAccount:
   # Specifies whether a service account should be created.
-  create: true
+  create: fales
   # Automatically mount a ServiceAccount's API credentials?
   automount: true
   # Annotations to add to the service account.
@@ -66,7 +66,7 @@ ingress:
     - host: python-app.test.com
       paths:
         - path: /
-          pathType: ImplementationSpecific
+          pathType: Prefix
   tls: []
     # - secretName: chart-example-tls
     #   hosts:
