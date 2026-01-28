@@ -10,10 +10,10 @@ nameOverride: ""
 fullnameOverride: ""
 
 serviceAccount:
-  create: true
+  create: false
   name: ""
 
-fpodAnnotations: {}
+podAnnotations: {}
 podLabels: {}
 
 podSecurityContext: {}
