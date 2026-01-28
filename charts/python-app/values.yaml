@@ -11,11 +11,9 @@ fullnameOverride: ""
 
 serviceAccount:
   create: true
-  automount: true
-  annotations: {}
   name: ""
 
-podAnnotations: {}
+fpodAnnotations: {}
 podLabels: {}
 
 podSecurityContext: {}
