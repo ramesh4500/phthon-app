@@ -1,16 +1,17 @@
-FROM python:3.10-alpine
+﻿FROM python:3.12-alpine
 
-COPY ./requirements.txt /tmp
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
 
-RUN pip install -r /tmp/requirements.txt
+WORKDIR /app
 
-COPY ./src /src
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD python src/app.py
+COPY src ./src
 
- 
-
-
+EXPOSE 8000
+CMD ["python", "src/app.py"]
 
 
 
