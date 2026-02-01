@@ -1,9 +1,13 @@
 ﻿name: ci
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - src/**
+      - Dockerfile
+      - requirements.txt
+      - .github/workflows/**
     branches:
       - main
 
@@ -31,6 +35,3 @@ jobs:
         with:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
-
-
-
