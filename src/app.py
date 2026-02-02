@@ -12,6 +12,20 @@ import datetime
 import socket
 # Flask constructor takes the name of 
 # current module (__name__) as argument.
+#!/usr/bin/env python3
+# The api end points used in the application are defined below.
+#'api/v1/details' = To get the details of the application
+#'api/v1/healthz' = To get the health status of the application
+
+# Importing flask module in the project is mandatory
+# An object of Flask class is our WSGI application.
+
+from flask import Flask, jsonify
+# Additional module for getting current time
+import datetime 
+import socket
+# Flask constructor takes the name of 
+# current module (__name__) as argument.
 
 app = Flask(__name__)
 
