@@ -5,9 +5,9 @@ on:
   push:
     paths:
       - src/**
-      - Dockerfile
-      - requirements.txt
-      - .github/workflows/**
+#      - Dockerfile
+#      - requirements.txt
+#      - .github/workflows/**
     branches:
       - main
 
@@ -21,17 +21,10 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-        name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ secrets.DOCKERHUB_USERNAME }}/python-app
-          tags: |
-            type=sha,format=short
+      
       -
         name: Build and push
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ramesh4500/python-app:${GITHUB_SHA::6}
