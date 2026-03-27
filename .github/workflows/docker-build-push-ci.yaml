@@ -45,11 +45,11 @@ jobs:
           curl -ksSL -o argocd https://jill-commorant-jayden.ngrok-free.dev/download/argocd-linux-amd64
           chmod +x argocd
           sudo mv ./argocd /usr/local/bin/argocd
-          
+
       - name: Argocd app sync
         shell: bash
         run: |
-          argoclogin jill-commorant-jayden.ngrok-free.dev \
+          argocd login jill-commorant-jayden.ngrok-free.dev \
             --insecure \
             --grpc-web \
             --username admin \
