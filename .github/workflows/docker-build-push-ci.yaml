@@ -44,7 +44,7 @@ jobs:
       # Updatings the docker image tag!!! 
       - name: Modify values file
         shell: bash
-        run: 
+        run: |
           echo ${{needs.ci.outputs.commit_id}}
           sudo apt update
           sudo apt install -y pipx jq
