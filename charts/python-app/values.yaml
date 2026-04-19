@@ -2,7 +2,7 @@ replicaCount: 1
 image:
   repository: ramesh4500/python-app
   pullPolicy: IfNotPresent
-  tag: '622888'
+  tag: 'ed3bc9'
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
