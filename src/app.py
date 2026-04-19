@@ -44,7 +44,7 @@ def info():
     return jsonify({
         'time': current_time,
         'hostname': socket.gethostname(),
-        'message': "Your Application is running great and you are doing awesome work! <3",
+        'message': "Your Application is running great and you are doing awesome work!!!!!!",
         'deployed_on': 'kubernetes'
     })
 
