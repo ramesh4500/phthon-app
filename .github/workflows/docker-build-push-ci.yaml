@@ -5,9 +5,6 @@ on:
   push:
     paths:
       - src/**
-#      - Dockerfile
-#      - requirements.txt
-#      - .github/workflows/**
     branches:
       - main
 
@@ -33,12 +30,34 @@ jobs:
         with:
           push: true
           tags: ramesh4500/python-app:${{ env.COMMIT_ID }}
+    outputs:
+      commit_id: ${{ env.COMMIT_ID }}
 
   cd:
     needs: ci
     runs-on: self-hosted
     steps:
-      
+
+      # Cloning Github repository!!!
+      - uses: actions/checkout@v3
+
+      # Updatings the docker image tag!!! 
+      - name: Modify values file
+        shell: bash
+        run: 
+          echo ${{needs.ci.outputs.commit_id}}
+          sudo apt update
+          sudo apt install -y pipx jq
+          pipx install yq
+          yq -Yi '.image.tag = "${{needs.ci.outputs.commit_id}}"' charts/python-app/values.yaml
+
+      # Commiting the changes of "values.yaml" file to remote branch!!!
+      - name: commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'Updates values.yaml file with commit ${{needs.ci.outputs.commit_id}}'
+
+
       - name: Install argocd cli
         shell: bash
         run: |
